@@ -63,6 +63,27 @@ public class Software_DL {
             System.out.println("Random Students:"+id[randNumber]);
         }
 
+        else if(Option == 3){
+            File file = new File(Constants.TEXT_FILE_NAME);
+            BufferedReader bufferedReader = null;
+
+            try {
+                bufferedReader = new BufferedReader(new FileReader(file));
+            }catch (FileNotFoundException e){
+                System.out.println("Exception :"+e.toString());
+            }
+
+            String string;
+            int count = 0;
+
+            while ((string = bufferedReader.readLine()) != null){
+                count ++;
+            }
+
+            System.out.println("Number of Students :"+count);
+        }
+
+
     }
     public static int randInt(int min,int max){
         Random random = new Random();
