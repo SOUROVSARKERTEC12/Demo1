@@ -1,6 +1,7 @@
 package File;
 
 import java.io.*;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Software_DL {
@@ -31,5 +32,64 @@ public class Software_DL {
                 System.out.println(string);
             }
         }
+
+        else if(Option == 2){
+            int count = getNumberOfStudent();
+
+            File file = new File(Constants.TEXT_FILE_NAME);
+            BufferedReader bufferedReader = null;
+
+            try{
+                bufferedReader = new BufferedReader(new FileReader(file));
+            }catch (Exception e){
+                System.out.println("Exception :" +e.toString());
+            }
+
+            String []id = new String[count];
+
+            int i = 0;
+            String string;
+            while ((string = bufferedReader.readLine())!= null){
+                if (string.equals("")){
+                    continue;
+                }
+
+                id[i] = string;
+                i++;
+            }
+
+            int randNumber =randInt(0,id.length-1);
+
+            System.out.println("Random Students:"+id[randNumber]);
+        }
+
+    }
+    public static int randInt(int min,int max){
+        Random random = new Random();
+        int randomNum = random.nextInt((max-min)+1)+min;
+
+        return randomNum;
+    }
+
+    public static int getNumberOfStudent() throws IOException{
+        File file = new File(Constants.TEXT_FILE_NAME);
+        BufferedReader bufferedReader = null;
+
+        try{
+            bufferedReader = new BufferedReader(new FileReader(file));
+        }catch (Exception e){
+            System.out.println("Exception :"+e.toString());
+        }
+
+        String string;
+        int count = 0;
+        while ((string = bufferedReader.readLine())!= null){
+            if (string.equals("")){
+                continue;
+            }
+            count++;
+        }
+
+        return count;
     }
 }
