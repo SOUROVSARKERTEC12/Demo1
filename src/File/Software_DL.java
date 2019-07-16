@@ -83,7 +83,16 @@ public class Software_DL {
             System.out.println("Number of Students :"+count);
         }
 
+        else if(Option == 4){
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter("E:\\Demo1\\src\\File\\Student_list.txt",true));
 
+            System.out.println("Enter your new student name :");
+            String add = scanner.next();
+
+            fileWriter.newLine();
+            fileWriter.write(add);
+            fileWriter.close();
+        }
     }
     public static int randInt(int min,int max){
         Random random = new Random();
