@@ -93,6 +93,35 @@ public class Software_DL {
             fileWriter.write(add);
             fileWriter.close();
         }
+
+        else if (Option == 5){
+            File file = new File(Constants.TEXT_FILE_NAME);
+            BufferedReader bufferedReader = null;
+
+            try{
+                bufferedReader = new BufferedReader(new FileReader(file));
+            }catch (FileNotFoundException e){
+                System.out.println("Exception :"+e.toString());
+            }
+
+            System.out.print("Enter Student Name :");
+
+            String checklist = scanner.next();
+            String string;
+            int flag = 0;
+
+            while ((string = bufferedReader.readLine()) != null){
+                if(string.equals(checklist)){
+                    flag++;
+                }
+            }
+
+            if (flag == 0){
+                System.out.println("Not Found in the list");
+            }
+            else
+                System.out.println("Found in the list");
+        }
     }
     public static int randInt(int min,int max){
         Random random = new Random();
